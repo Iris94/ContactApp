@@ -1,0 +1,59 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+#phoneNumber,
+#firstName,
+#lastName,
+#emailAddress {
+    outline: 0;
+}
+
+#phoneNumber:valid,
+#firstName:valid,
+#lastName:valid,
+#emailAddress:valid {
+    border-color: green;
+    border-width: 2px;
+}
+
+#phoneNumber:focus:invalid,
+#firstName:focus:invalid,
+#lastName:focus:invalid,
+#emailAddress:focus:invalid {
+    border-color: red;
+    border-width: 1.5px;
+}
+
+input[type=radio]#sexMale {
+    width: 15px;
+    height: 15px;
+    accent-color: blue;
+}
+
+input[type=radio]#sexFemale {
+    width: 15px;
+    height: 15px;
+    accent-color: red;
+}
+

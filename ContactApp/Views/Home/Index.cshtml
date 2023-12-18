@@ -1,0 +1,45 @@
+﻿@model List<ContactApp.Models.Person>;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="~/js/site.js"></script>
+    <title>Contact App</title>
+</head>
+<body class="bg-dark vh-100">
+    <div class="container mt-5 h-75 p-2">
+        <!--Header-->
+        <div class="bg-secondary bg-opacity-50 rounded-3 h-25 d-flex align-items-center justify-content-center">
+            <div class="col">
+                <h1 class="text-center text-white-50 fw-bold">Your Contact App</h1>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="h-75 row p-1 d-flex gap-1 justify-content-between">
+
+            <!--Account space-->
+            <div class="container p-5 bg-secondary bg-opacity-50 rounded-3 col-3">
+                <div class="row-3 border border-4 rounded-top border-bottom-0 border-warning text-white-50 h-50 d-flex justify-content-center align-items-center">
+                    <i class="bi-person display-1"></i>
+                </div>
+                <div class="row-1"><h3 class="text-center text-white-50 fw-bold fs-5">User Name</h3></div>
+            </div>
+
+            <!--Database space-->
+            <div class="bg-gradient rounded-3 col-8 p-5 overflow-scroll">
+                @Html.Partial("~/Views/Shared/_TablePerson.cshtml", Model);
+                @Html.Partial("~/Views/Shared/_PersonModal.cshtml");
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
