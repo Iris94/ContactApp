@@ -4,21 +4,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ContactApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(ContactContext contactContext) : Controller
     {
-        private readonly ContactContext _contactContext;
-        public HomeController (ContactContext contactContext)
-        {
-            _contactContext = contactContext;
-        }
-
+        private readonly ContactContext _contactContext = contactContext;
 
         public async Task<IActionResult> Index()
         {
             var persons = await _contactContext.Persons
-                                               .Include(p => p.PhoneNumbers)
-                                               .Include(a => a.EmailAddresses)
-                                               .ToListAsync();
+                .Include(p => p.PhoneNumbers)
+                .Include(a => a.EmailAddresses)
+                .ToListAsync();
+
             return View(persons);
         }
     }

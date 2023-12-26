@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ContactApp.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstInitializer : Migration
+    public partial class Test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,12 +17,12 @@ namespace ContactApp.Migrations
                 {
                     PersonID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    State = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Sex = table.Column<int>(type: "int", nullable: false),
-                    Birthday = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Sex = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Birthday = table.Column<DateOnly>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,14 +33,14 @@ namespace ContactApp.Migrations
                 name: "EmailAddress",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    EmailID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmailAddress", x => x.ID);
+                    table.PrimaryKey("PK_EmailAddress", x => x.EmailID);
                     table.ForeignKey(
                         name: "FK_EmailAddress_Person_PersonID",
                         column: x => x.PersonID,
@@ -53,14 +53,14 @@ namespace ContactApp.Migrations
                 name: "PhoneNumber",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    PhoneID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PersonID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PhoneNumber", x => x.ID);
+                    table.PrimaryKey("PK_PhoneNumber", x => x.PhoneID);
                     table.ForeignKey(
                         name: "FK_PhoneNumber_Person_PersonID",
                         column: x => x.PersonID,

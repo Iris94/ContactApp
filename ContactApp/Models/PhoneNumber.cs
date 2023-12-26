@@ -6,12 +6,12 @@ namespace ContactApp.Models
     public class PhoneNumber
     {
         [Key]
-        public int ID { get; set; }
-        public string Phone {  get; set; }
+        public int PhoneID { get; set; }
+        public string? Phone {  get; set; }
 
-        
+
         public int PersonID { get; set; }
         [ForeignKey("PersonID")]
-        public Person Person { get; set; }
+        public Person? Person { get; set; }
     }
 }

@@ -11,6 +11,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="~/js/site.js"></script>
+    <script defer src="~/js/addPerson.js"></script>
+    <script defer src="~/js/editPerson.js"></script>
+    <script defer src="~/js/deletePerson.js"></script>
+    <script defer src="~/js/editPersonPatch.js"></script>
+    <script defer src="~/js/realTimeUpdates.js"></script>
     <title>Contact App</title>
 </head>
 <body class="bg-dark vh-100">
@@ -37,6 +42,8 @@
             <div class="bg-gradient rounded-3 col-8 p-5 overflow-scroll">
                 @Html.Partial("~/Views/Shared/_TablePerson.cshtml", Model);
                 @Html.Partial("~/Views/Shared/_PersonModal.cshtml");
+                @Html.Partial("~/Views/Shared/_EditPersonModal.cshtml");
+                @Html.Partial("~/Views/Shared/_DelPersonModal.cshtml");
             </div>
 
         </div>

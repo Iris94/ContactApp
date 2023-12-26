@@ -25,14 +25,18 @@ body {
 #phoneNumber,
 #firstName,
 #lastName,
-#emailAddress {
+#emailAddress,
+#cityDropdown,
+#stateDropdown{
     outline: 0;
 }
 
 #phoneNumber:valid,
 #firstName:valid,
 #lastName:valid,
-#emailAddress:valid {
+#emailAddress:valid,
+#cityDropdown:valid,
+#stateDropdown:valid{
     border-color: green;
     border-width: 2px;
 }
@@ -40,7 +44,9 @@ body {
 #phoneNumber:focus:invalid,
 #firstName:focus:invalid,
 #lastName:focus:invalid,
-#emailAddress:focus:invalid {
+#emailAddress:focus:invalid,
+#stateDropdown:focus:invalid,
+#cityDropdown:focus:invalid{
     border-color: red;
     border-width: 1.5px;
 }

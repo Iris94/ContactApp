@@ -9,11 +9,13 @@
             <th class="col">@Html.DisplayNameFor(model => model.First().FirstName)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().LastName)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().Sex)</th>
-            <th class="col">@Html.DisplayNameFor(model => model.First().City)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().State)</th>
+            <th class="col">@Html.DisplayNameFor(model => model.First().City)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().Birthday)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().PhoneNumbers)</th>
             <th class="col">@Html.DisplayNameFor(model => model.First().EmailAddresses)</th>
+            <th class="col">Edit</th>
+            <th class="col">Delete</th>
         </tr>
     </thead>
 
@@ -24,8 +26,8 @@
                 <td>@person.FirstName</td>
                 <td>@person.LastName</td>
                 <td>@person.Sex</td>
-                <td>@person.City</td>
                 <td>@person.State</td>
+                <td>@person.City</td>
                 <td>@person.Birthday</td>
                 <td>
                     @if (person.PhoneNumbers != null)
@@ -45,6 +47,17 @@
                         }
                     }
                 </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" 
+                            onclick="editPerson(@person.PersonID)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" 
+                            onclick="delPerson(@person.PersonID)">
+                        Delete
+                    </button>
+                </td>
+
             </tr>
         }
     </tbody>

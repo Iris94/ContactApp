@@ -1,17 +1,21 @@
 ﻿using ContactApp.Models;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ContactApp.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(ContactContext context)
+        public static void Initialize(ContactContext contactContext, StateCityContext stateCity)
         {
-            context.Database.EnsureCreated();
-            if (context.Persons.Any())
+            contactContext.Database.EnsureCreated();
+
+            if (contactContext.Persons.Any())
             {
                 return;
             }
+
 
             var persons = new Person[]
             {
@@ -19,10 +23,10 @@ namespace ContactApp.Data
                 {
                     FirstName = "Harry",
                     LastName = "Potter",
-                    Sex = Gender.Male,
+                    Sex = "Male",
                     State = "England",
                     City = "London",
-                    Birthday = DateTime.Parse("1991-08-09"),
+                    Birthday = DateOnly.Parse("1991-08-09"),
                     PhoneNumbers = new List<PhoneNumber>
                     {
                         new PhoneNumber {Phone = "034/235/123"},
@@ -37,10 +41,10 @@ namespace ContactApp.Data
                 {
                     FirstName = "Luke",
                     LastName = "Skywalker",
-                    Sex = Gender.Male,
+                    Sex = "Male",
                     State = "England",
                     City = "London",
-                    Birthday = DateTime.Parse("1972-05-21"),
+                    Birthday = DateOnly.Parse("1972-05-21"),
                     PhoneNumbers = new List<PhoneNumber>
                     {
                         new PhoneNumber {Phone = "034/235/123"}
@@ -55,10 +59,10 @@ namespace ContactApp.Data
                 {
                     FirstName = "Lara",
                     LastName = "Croft",
-                    Sex = Gender.Female,
+                    Sex = "Female",
                     State = "England",
                     City = "London",
-                    Birthday = DateTime.Parse("1981-02-01"),
+                    Birthday = DateOnly.Parse("1981-02-01"),
                     PhoneNumbers = new List<PhoneNumber>
                     {
                         new PhoneNumber {Phone = "034/235/123"}
@@ -72,10 +76,10 @@ namespace ContactApp.Data
                 {
                     FirstName = "Frodo",
                     LastName = "Baggins",
-                    Sex = Gender.Male,
+                    Sex = "Male",
                     State = "England",
                     City = "London",
-                    Birthday = DateTime.Parse("2000-04-02"),
+                    Birthday = DateOnly.Parse("2000-04-02"),
                     PhoneNumbers = new List<PhoneNumber>
                     {
                         new PhoneNumber {Phone = "066/619/619"}
@@ -86,12 +90,8 @@ namespace ContactApp.Data
                     }
                 }
             };
-            foreach (Person p in persons)
-            {
-                context.Persons.Add(p);
-            }
-            context.SaveChanges();
-        }
+
+            contactContext.Persons.AddRange(persons);
+            contactContext.SaveChanges();        }
     }
 }
-

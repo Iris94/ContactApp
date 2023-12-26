@@ -1,12 +1,17 @@
 using ContactApp.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft;
+using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ContactContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
+builder.Services.AddDbContext<StateCityContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
@@ -16,7 +21,8 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = services.GetRequiredService<ContactContext>();
-        DbInitializer.Initialize(context);
+        var stateCity = services.GetRequiredService<StateCityContext>();
+        DbInitializer.Initialize(context, stateCity);
     }
     catch (Exception)
     {

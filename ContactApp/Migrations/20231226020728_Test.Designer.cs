@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContactApp.Migrations
 {
     [DbContext(typeof(ContactContext))]
-    [Migration("20231218232154_FirstInitializer")]
-    partial class FirstInitializer
+    [Migration("20231226020728_Test")]
+    partial class Test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,20 +27,19 @@ namespace ContactApp.Migrations
 
             modelBuilder.Entity("ContactApp.Models.EmailAddress", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("EmailID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmailID"));
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PersonID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("EmailID");
 
                     b.HasIndex("PersonID");
 
@@ -55,26 +54,23 @@ namespace ContactApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PersonID"));
 
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly>("Birthday")
+                        .HasColumnType("date");
 
                     b.Property<string>("City")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Sex")
-                        .HasColumnType("int");
-
                     b.Property<string>("State")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonID");
@@ -84,20 +80,19 @@ namespace ContactApp.Migrations
 
             modelBuilder.Entity("ContactApp.Models.PhoneNumber", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("PhoneID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PhoneID"));
 
                     b.Property<int>("PersonID")
                         .HasColumnType("int");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("PhoneID");
 
                     b.HasIndex("PersonID");
 
